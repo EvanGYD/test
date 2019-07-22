@@ -1,0 +1,272 @@
+1.仅使用 Python 基本语法，即不使用任何模块，编写 Python 程序计算下列数学表达式的结果并输出，小数点后保留3位。
+
+ 
+输入
+该题目没有输入
+ 
+输出
+输出结果小数点后保留 3 位
+
+x = pow((3**4 + 5*(6**7))/8, 0.5)
+print("{:.3f}".format(x))
+2.以中国共产党第十九次全国代表大会报告中一句话作为字符串变量 s，完善 Python 程序，分别用 Python 内置函数及 jieba 库中已有函数计算字符串 s 的中文字符个数及中文词语个数。注意，中文字符包含中文标点符号。（提交的代码应包括题目中给出的部分）
+import jieba
+s = "中国特色社会主义进入新时代，我国社会主要矛盾已经转化为人民日益增长的美好生活需要和不平衡不充分的发展之间的矛盾。"
+n = ____①____
+m = ____②____print("中文字符数为{}，中文词语数为{}。".format(n, m))，中文
+ 
+ 
+输入
+该题目没有输入
+ 
+输出
+输出字符串 s 的中文字符个数及中文词语个数
+import jieba
+s = "中国特色社会主义进入新时代，我国社会主要矛盾已经转化为人民日益增长的美好生活需要和不平衡不充分的发展之间的矛盾。"
+n = len(s) 
+m = len(jieba.lcut(s))print("中文字符数为{}，中文词语数为{}。".format(n, m))
+3.0x4DC0 是一个十六进制数，它对应的 Unicode 编码是中国古老的《易经》六十四卦的第一卦，请输出第 51 卦（震卦）对应的 Unicode 编码的二进制、十进制、八进制和十六进制格式。
+print("二进制{____①____}、十进制{____②____}、八进制{____③____}、十六进制{____④____}".format(____⑤____))
+ 
+输入
+该题目没有输入 
+ 
+输出
+符合输出要求即可
+ 
+
+print("二进制{0:b}、十进制{0}、八进制{0:o}、十六进制{0:x}".format(0x4DC0+50))
+解析：Python 十进制转二进制、八进制、十六进制
+ Python3 实例
+以下代码用于实现十进制转二进制、八进制、十六进制：
+实例(Python 3.0+)
+# -*- coding: UTF-8 -*- # Filename : test.py # author by : www.runoob.com # 获取用户输入十进制数 dec = int(input("输入数字：")) print("十进制数为：", dec) print("转换为二进制为：", bin(dec)) print("转换为八进制为：", oct(dec)) print("转换为十六进制为：", hex(dec))
+执行以上代码输出结果为：
+python3 test.py 输入数字：5十进制数为：5转换为二进制为： 0b101转换为八进制为： 0o5转换为十六进制为： 0x5
+python3 test.py 输入数字：12十进制数为：12转换为二进制为： 0b1100转换为八进制为： 0o14转换为十六进制为： 0xc
+ Python3 实例
+ Python3 标准库概览
+Python3 正则表达式 
+2 篇笔记
+.
+具体实现
+.
+十进制到二进制：
+.
+def dec2bin(num):
+    l = []
+    if num < 0:
+        return '-' + dec2bin(abs(num))
+    while True:
+        num, remainder = divmod(num, 2)
+        l.append(str(remainder))
+        if num == 0:
+            return ''.join(l[::-1])
+.
+十进制到八进制：
+.
+def dec2oct(num):
+    l = []
+    if num < 0:
+        return '-' + dec2oct(abs(num))
+    while True:
+        num, remainder = divmod(num, 8)
+        l.append(str(remainder))
+        if num == 0:
+            return ''.join(l[::-1])
+.
+十进制到十六进制：
+.
+base = [str(x) for x in range(10)] + [ chr(x) for x in range(ord('A'),ord('A')+6)]def dec2hex(num):
+    l = []
+    if num < 0:
+        return '-' + dec2hex(abs(num))
+    while True:
+        num,rem = divmod(num, 16)
+        l.append(base[rem])
+        if num == 0:
+            return ''.join(l[::-1])
+.
+十进制数转化成二进制数（float）
+.
+while True:
+    number=input("请输入一个正数:(输入q退出程序）")
+    if number in ['q','Q']:
+        break
+    elif not float(number)>0:
+        print("请输入一个正数（输入q退出程序）：")
+    else:
+        number=float(number)
+        array1=[]
+        array2=[]
+        integer=int(number)
+        floa=number-integer
+        while integer!=0:
+            array1.append(integer%2)
+            integer=integer//2
+        else:
+            array1.append(0)
+        array1.reverse()
+        while floa>0.00001:
+            array2.append(int(2*floa))
+            floa=floa*2-int(floa*2)
+        else:
+            array2.append(0)
+        array1.append(".")
+        array=array1+array2
+        for x in array:
+            print(x,end="")
+        print("\n")
+.
+
+4.使用 turtle 库的 turtle.fd() 函数和 turtle.seth() 函数绘制一个边长为 200 的正方形，效果如下图所示。请结合格式框架，补充横线处代码。
+
+import turtle
+d = 0
+for i in range(____①____):
+    turtle.fd(____②____)
+    d = ____③____
+    turtle.seth(d)
+ 
+---------------------------------------------------------------
+自动评阅说明
+ 
+最后使用 print 函数输出 ____①____,____②____,____③____中应填代码即可以自动评阅得分，如果有运算符，请在运算符两侧加上空格，
+例如，如果代码为：
+import turtle
+d = 0for i in range(1):
+    turtle.fd(100)
+    d = i + 100
+    turtle.seth(d)
+则在提交代码页面输入： print(1, 100, 'i + 100')
+习题讲解
+参考代码
+import turtle
+d = 0
+for i in range(4):
+    turtle.fd(200)
+    d = d + 90
+    turtle.seth(d)
+解析：turtle.seth()固定方向turtle.left()向左转turtle.right()向右转
+5.列表 ls 中存储了我国 39 所 985 高校所对应的学校类型，请以这个列表为数据变量，完善 Python 代码，统计输出各类型的数量。
+ls = ["综合", "理工", "综合", "综合", "综合", "综合", "综合", "综合", "综合", "综合",\
+      "师范", "理工", "综合", "理工", "综合", "综合", "综合", "综合", "综合","理工",\
+      "理工", "理工", "理工", "师范", "综合", "农林", "理工", "综合", "理工", "理工", \
+      "理工", "综合", "理工", "综合", "综合", "理工", "农林", "民族", "军事"]
+ 
+输入格式
+该题目没有输入
+ 
+输出格式
+要求按以下顺序输出
+综合:1
+理工:2
+师范:3
+农林:4
+民族:5
+军事:6
+ 
+其中冒号为英文冒号
+习题讲解
+参考代码
+ls = ["综合", "理工", "综合", "综合", "综合", "综合", "综合", "综合", \
+      "综合", "综合", "师范", "理工", "综合", "理工", "综合", "综合", \
+      "综合", "综合", "综合", "理工", "理工", "理工", "理工", "师范", \
+      "综合", "农林", "理工", "综合", "理工", "理工", "理工", "综合", \
+      "理工", "综合", "综合", "理工", "农林", "民族", "军事"]
+d = {}
+for word in ls:
+    d[word] = d.get(word, 0) + 1for k in d:
+    print("{}:{}".format(k, d[k]))
+解析：Python3 字典 get() 方法
+ Python3 字典
+
+描述
+Python 字典 get() 函数返回指定键的值，如果值不在字典中返回默认值。
+语法
+get()方法语法：
+dict.get(key, default=None)
+参数
+key -- 字典中要查找的键。
+default -- 如果指定键的值不存在时，返回该默认值值。
+返回值
+返回指定键的值，如果值不在字典中返回默认值 None。
+实例
+以下实例展示了 get()函数的使用方法：
+#!/usr/bin/python3 
+
+dict = {'Name': 'Runoob', 'Age': 27}
+print ("Age 值为 : %s" %  dict.get('Age'))print ("Sex 值为 : %s" %  dict.get('Sex', "NA"))
+以上实例输出结果为：
+Age 值为 : 27Sex 值为 : NA
+6.《论语》是儒家学派的经典著作之一，主要记录了孔子及其弟子的言行。网络上有很多《论语》文本版本。这里给出了一个版本，文件名称为“论语-网络版.txt”，其内容采用如下格式组织：
+【原文】
+
+1.11子曰：“父在，观其(1)志；父没，观其行(2)；三年(3)无改于父之道(4)，可谓孝矣。”
+
+【注释】
+
+（略）
+
+【译文】
+
+（略）
+
+【评析】
+
+（略）
+该版本通过【原文】标记《论语》原文内容，采用【注释】、【译文】和【评析】标记对原文的注释、译文和评析。
+ 
+问题1：请编写程序，提取《论语》文档中所有原文内容，输出保存到“论语-提取版.txt”文件。输出文件格式要求：去掉文章中原文部分每行行首空格及如“1.11”等的数字标志，行尾无空格、无空行。参考格式如下（原文中括号及内部数字是对应源文件中注释项的标记）：
+子曰(1)：“学(2)而时习(3)之，不亦说(4)乎？有朋(5)自远方来，不亦乐(6)乎？人不知(7)，而不愠(8)，不亦君子(9)乎？”
+
+有子(1)曰：“其为人也孝弟(2)，而好犯上者(3)，鲜(4)矣；不好犯上，而好作乱者，未之有也(5)。君子务本(6)，本立而道生(7)。孝弟也者，其为人之本与(8)？”
+
+子曰：“巧言令色(1)，鲜(2)仁矣。”
+
+（略）
+ 
+问题2：请编写程序，在“论语-提取版.txt”基础上，进一步去掉每行文字中所有括号及其内部数字，保存为“论文-原文.txt”文件。参考格式如下： 
+子曰：“学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知，而不愠，不亦君子乎？”
+
+有子曰：“其为人也孝弟，而好犯上者，鲜矣；不好犯上，而好作乱者，未之有也。君子务本，本立而道生。孝弟也者，其为人之本与？”
+
+子曰：巧言令色，鲜仁矣。”
+
+（略）
+ 
+本题暂不支持自动评分，print("我已掌握")，即可得分
+习题讲解
+ 
+参考代码 1
+fi = open("论语-网络版.txt", "r", encoding="utf-8")
+fo = open("论语-提取版.txt", "w")
+wflag = False            #写标记
+for line in fi:
+    if "【" in line:     #遇到【时，说明已经到了新的区域，写标记置否
+        wflag = False
+    if "【原文】" in line:  #遇到【原文】时，设置写标记为True
+        wflag = True
+        continue    
+    if wflag == True:    #根据写标记将当前行内容写入新的文件
+        for i in range(0,25):
+            for j in range(0,25):
+                line = line.replace("{}·{}".format(i,j),"**")
+        for i in range(0,10):
+            line = line.replace("*{}".format(i),"")
+        for i in range(0,10):
+            line = line.replace("{}*".format(i),"")
+        line = line.replace("*","")   
+        fo.write(line)
+fi.close()
+fo.close()
+ 
+参考代码 2
+fi = open("论语-提取版.txt", "r")
+fo = open("论语-原文.txt", "w")for line in fi:   #逐行遍历
+    for i in range(1,23):  #对产生1到22数字 
+        line=line.replace("({})".format(i), "")  #构造(i)并替换
+    fo.write(line)
+fi.close()
+fo.close()
+
